@@ -1,10 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cards/model/buy_list.dart';
+import 'package:flutter_cards/utility/service.dart';
 class TimePage extends StatefulWidget {
   @override
   _TimePageState createState() => _TimePageState();
 }
 
 class _TimePageState extends State<TimePage> {
+
+QuerySnapshot productSnapshot;
+DatabaseService databaseService = new DatabaseService();
+@override
+void initState(){
+   print("${databaseService.documentIdOfBuyProduct}");
+   databaseService.getProductData(databaseService.documentIdOfBuyProduct).then((val){
+     productSnapshot = val;
+      super.initState();
+   }
+   Product(productSnapshot['name'],productSnapshot['price'],productSnapshot['image']);
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

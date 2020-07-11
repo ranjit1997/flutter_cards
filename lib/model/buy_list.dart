@@ -1,8 +1,8 @@
-class BuyList{
-  String name;
-  String price;
-  String image;
+class Product
+{ 
+  String productName;
+  String productPrice;
+  String productImage;
 
-  BuyList(this.name, this.price, this.image);
-  
+  Product(this.productName,this.productPrice,this.productImage);
 }
